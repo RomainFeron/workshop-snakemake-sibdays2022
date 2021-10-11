@@ -4,6 +4,7 @@ rule all:
     input:
         'results/variants.tsv'
 
+
 # Exercise 1 before wildcards
 # rule bwa_mapA:
 #    input:
@@ -14,6 +15,7 @@ rule all:
 #     shell:
 #         'bwa mem {input} | samtools view -b > {output}'
 
+
 rule bwa_map_gen:
     input:
         'data/genome.fa',
@@ -23,6 +25,7 @@ rule bwa_map_gen:
     shell:
         'bwa mem {input} | samtools view -b > {output} '
 
+
 rule sort_bam:
     input:
         rules.bwa_map_gen.output
@@ -31,6 +34,7 @@ rule sort_bam:
     shell:
         'samtools sort -O bam {input} > {output}'
 
+
 rule samtools_idx:
     input:
         rules.sort_bam.output
@@ -38,6 +42,7 @@ rule samtools_idx:
         'results/{sample}.sorted.bam.bai'
     shell:
         'samtools index {input}'
+
 
 # Implementation of bcftools rules before adding the parameter
 # rule bcftools:
@@ -49,6 +54,7 @@ rule samtools_idx:
 #         'results/variants.vcf'
 #     shell:
 #         'bcftools mpileup -f {input.genome} {input.aln} | bcftools call -mv - > {output}'
+
 
 rule bcftools:
     input:
@@ -62,6 +68,7 @@ rule bcftools:
     shell:
         'bcftools mpileup -f {input.genome} {input.aln} | bcftools call -P {params.subrate} -mv - > {output}'
 
+
 rule parse_bcftools:
     input:
         rules.bcftools.output
@@ -69,6 +76,7 @@ rule parse_bcftools:
         'results/substitution_table.tsv'
     script:
         'create_substitution_table.py'
+
 
 # Command to execute to visualize the DAG
 # snakemake --dag results/substitution_table.tsv | dot -Tpng > dag.png

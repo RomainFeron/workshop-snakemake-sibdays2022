@@ -10,4 +10,4 @@ include: 'rules/variants_wrappers.smk'
 
 rule all:
     input:
-        'results/variants.tsv'
+        'results/substitution_table.tsv'
