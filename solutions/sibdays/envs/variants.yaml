@@ -1,6 +1,0 @@
-name: variants-env
-channels:
-    - conda-forge
-    - bioconda
-dependencies:
-    - bcftools=1.9

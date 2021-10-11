@@ -4,7 +4,7 @@ rule all:
     input:
         'results/variants.tsv'
 
-# Rule implemented after the first question
+# Exercise 1
 # rule bwa_mapA:
 #    input:
 #         rules.bwa_idx.output,

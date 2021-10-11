@@ -1,7 +1,0 @@
-name: alignment-env
-channels:
-    - conda-forge
-    - bioconda
-dependencies:
-    - samtools=1.9
-    - bwa=0.7.17
