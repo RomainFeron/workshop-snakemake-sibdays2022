@@ -1,25 +1,24 @@
 # Snakemake for reproducible analyses
 
-This repository is used as a base for the virtual workshop "Snakemake for reproducible analyses" organized at SIB-days 2020. It is a short version of the [original workshop](https://github.com/RomainFeron/workshop-snakemake-pypharma2019) organized at PyPharma 2019. It contains:
+This repository is used as a base for the workshop "Snakemake for reproducible analyses" organized at UNIL on October 14th, 2021. It is an updated version of a previous [workshop](https://github.com/RomainFeron/workshop-snakemake-pypharma2019) organized at PyPharma 2019. The repository contains:
 
-- A setup script for Azure Notebooks
 - A conda environment with all the dependencies required during the workshop
-- Properly implemented solutions for all exercises
-- A 'workflow' directory in which participants will implement the exercises, which contains sample data
+- A reference implementation of solutions for all exercises
+- A 'workflow' directory in which participants should implement the exercises, which contains sample data
 
-The structure of the workshop loosely follows that of the official [Snakemake tutorial](https://snakemake.readthedocs.io/en/v5.7.4/tutorial/tutorial.html), with a few modifications.
+The structure of the workshop loosely follows that of the official [Snakemake tutorial](https://snakemake.readthedocs.io/en/v6.9.1/tutorial/tutorial.html), with a few modifications.
 
-All the exercises and material required to complete them are available on the repository's [wiki](https://github.com/RomainFeron/workshop-snakemake-sibdays2020/wiki).
+All the exercises and material required to complete them are available on the repository's [wiki](https://github.com/RomainFeron/workshop-snakemake-unil2021/wiki).
 
-To complete the workshop's exercises, you have two choices:
+## Setup the workshop environment
 
-- **Locally**: requires setting up Conda and Snakemake on your own machine, which will be helpful in the future. Instructions to setup Conda, Snakemake, and the workshop's environment are provided [here](#setup-locally).
+## Note for Windows user
 
-- **Azure notebooks**: requires a microsoft account and a small setup step. It is easier than setting snakemake up locally, but will be less helpful in the future. Instructions to create an Azure Notebook for the workshop are provided [here](#setup-on-azure-notebooks).
-
-## Setup locally
+Although Snakemake and Conda can work on Windows, the shell and general environment are very different from unix-based operating systems. If you are using a Windows machine for this workshop, please refer to the [Windows installation instructions](https://snakemake.readthedocs.io/en/v6.9.1/tutorial/setup.html#setup-on-windows) in the official documentation. We recommend you to setup the WSL if you can, as it is the most efficient way to run Snakemake on Windows, and it will be useful for many other Bioinfomatics applications in the future.
 
 ### Installing Conda
+
+Detailed instructions [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 
 **Download the installer script and run it:**
 
@@ -33,8 +32,8 @@ bash Miniconda3-latest-Linux-x86_64.sh
 *MacOS:*
 
 ```bash
-wget curl https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o Miniconda3-latest-MacOSX-x86_64.sh
-bash bash Miniconda3-latest-MacOSX-x86_64.sh
+curl https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
 ```
 
 **Follow instructions from the prompt:**
@@ -61,7 +60,7 @@ conda env list
 The output should look like this (username and hostname will be different):
 
 ```bash
-(base) nbuser@nbserver:~$ conda env list
+(base) user@host:~$ conda env list
 # conda environments:
 #
 base                  *  /home/nbuser/miniconda3
@@ -77,16 +76,16 @@ conda update conda
 
 ### Clone the workshop's repository
 
-**With SSH (recommended if you set it up):**
+**With SSH (recommended in general for GitHub, need to set it up if you haven't already):**
 
 ```bash
-git clone git@github.com:RomainFeron/snakemake_workshop.git
+git clone git@github.com:RomainFeron/workshop-snakemake-unil2021.git
 ```
 
 **With HTTPS (default, no setup required):**
 
 ```bash
-git clone https://github.com/RomainFeron/snakemake_workshop.git
+git clone https://github.com/RomainFeron/workshop-snakemake-unil2021.git
 ```
 
 ### Create a Conda environment with all software required by the workshop
@@ -96,7 +95,7 @@ We provide an environment file `workshop.yaml` that contains all software requir
 Navigate to the workshop's base directory. If you followed the previous instructions exactly, you can do with:
 
 ```bash
-cd snakemake_workshop
+cd workshop-snakemake-unil2021
 ```
 
 Create the conda environment from the environment file:
@@ -120,77 +119,12 @@ You can now run Snakemake and complete the workshop's exercises.
 This step is not part of the setup process, but if you want to use Snakemake by yourself in the future, the recommended way to run it is to create a conda environment specifically for Snakemake:
 
 ```bash
-# Create a new empty environment called "snakemake-env"
-conda create --name snakemake-env
-# Activate the environment "snakemake-env"
-conda activate snakemake-env
+# Create a new empty environment called "snakemake"
+conda create --name snakemake
+# Activate the environment "snakemake"
+conda activate snakemake
 # Install snakemake from the Bioconda channel (conda-forge contains dependencies)
 conda install -c conda-forge -c bioconda snakemake
 ```
 
-You can now activate the environment snakemake-env and run snakemake from it. It is advised to keep the environment as clean as possible, *i.e.* only install software related to running snakemake in general, not software specifically for your workflow.
-
-## Setup on Azure Notebooks
-
-### Creating a Notebook for the workshop
-
-**Register for Azure Notebooks**
-
-Log into Azure Notebooks at https://notebooks.azure.com/account/signin. You will need a Microsoft account for that; if you do not have one, create one following the link on the sign-in page. If you already have a Github account, you can use it to speed up the process.
-
-**Create a new project**
-
-Once you're logged in, go to your projects' page by clicking the `My projects` tab in the top-left menu:
-
-![](docs/img/azure_my_projects.png)
-
-Then, create a new project from the Github Repository by clicking the `Upload GitHub Repo` button in the right menu:
-
-![](docs/img/azure_upload_repo.png)
-
-Fill the form:
-
-- GitHub repository: `RomainFeron/snakemake_workshop`
-- Project Name and ID: chose what you want
-- Leave the boxes unticked
-
-![](docs/img/azure_repo_config.png)
-
-Click "import"; the project will now appear in the list, with the name you chose. After the import process is complete, start a free compute instance for the project by clicking the `Terminal` button:
-
-![](docs/img/azure_terminal.png)
-
-A standard terminal with bash shell will be launched in a new browser tab. A message warning you that the container is being prepared should pop up, you can click "OK".
-
-**The instance will be initialized with a script that setup the workshop's environment (aznbsetup.sh). This process can take up to 30 minutes to complete.**
-**Instances are reset after 1 hour of inactivity. If you plan to run the workshop from an Azure Notebook instance, please start the instance at the very beginning of the workshop or even a bit before if you can, so that you can start the first exercises session on time !**
-
-To verify that the setup process is complete, check the end of the relevant log file with the command `tail .nb.setup.log`. If the setup process is complete, you should see the following text:
-
-```
-# To activate this environment, use
-#
-#     $ conda activate snakemake-workshop
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-```
-
-If another message is displayed, the setup process has not been completed yet; you can start creating and editing files but you won't be able to run Snakemake yet.
-
-After the setup process is completed, update your bash environment with the command `source .bashrc`. Then, test your setup by activating the workshop's conda environment with the command `conda activate snakemake-workshop`.
-
-### Creating and editing files
-
-You can create a new file from the project's main page (https://notebooks.azure.com/<your_account_name>/projects/snakemake-workshop) by clicking the `+New` button and selecting `Blank File`:
-
-![](docs/img/azure_new_file.png)
-
-You can then edit this file directly from the web interface by selecting it and clicking the `Edit` button on the file's preview page.
-
-Alternatively, you can create and edit files locally using your preferred text editor and upload them to the project using the `Upload` button next to the `+New` button.
-
-### Running Snakemake
-
-Start a terminal and activate the workshop's conda environment as described in the Setup section, then navigate to the proper directory and simply run `snakemake`.
+You can now activate the environment snakemake and run Snakemake from it. It is advised to keep the environment as clean as possible, *i.e.* only install software related to running snakemake in general, not software specifically for your workflow.
