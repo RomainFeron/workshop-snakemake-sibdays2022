@@ -4,7 +4,7 @@ rule all:
     input:
         'results/variants.tsv'
 
-# Exercise 1
+# Exercise 1 before wildcards
 # rule bwa_mapA:
 #    input:
 #         rules.bwa_idx.output,
@@ -70,5 +70,5 @@ rule parse_bcftools:
     script:
         'create_substitution_table.py'
 
-# Command to execute to visualize the BAM
+# Command to execute to visualize the DAG
 # snakemake --dag results/substitution_table.tsv | dot -Tpng > dag.png

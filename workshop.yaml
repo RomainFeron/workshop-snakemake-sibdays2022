@@ -4,7 +4,7 @@ channels:
     - bioconda
 dependencies:
     - python=3.6.8
-    - snakemake=5.7.0
+    - snakemake=6.9.1
     - jinja2=2.10
     - networkx=2.1
     - matplotlib=2.2.3
