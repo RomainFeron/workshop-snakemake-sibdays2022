@@ -2,7 +2,7 @@ samples = ['A', 'B']
 
 rule all:
     input:
-        'results/variants.tsv'
+        'results/substitution_table.tsv'
 
 
 # Exercise 1 before wildcards
