@@ -1,6 +1,6 @@
 # Snakemake for reproducible analyses
 
-This repository is used as a base for the workshop "Introduction to Snakemake for reproducible analyses" organized at SIB-Days on June 15th, 2022. It is an updated version of a previous workshop organized at [workshop] organized at [PyPharma 2019](https://github.com/RomainFeron/workshop-snakemake-pypharma2019), [SIB-days 2020](https://github.com/RomainFeron/workshop-snakemake-sibdays2020), and at [UNIL in October 2021](https://github.com/RomainFeron/workshop-snakemake-unil2021). The repository contains:
+This repository is used as a base for the workshop "Introduction to Snakemake for reproducible analyses" organized at SIB-Days on June 15th, 2022. It is an updated version of a previous workshop organized at [PyPharma 2019](https://github.com/RomainFeron/workshop-snakemake-pypharma2019), [SIB-days 2020](https://github.com/RomainFeron/workshop-snakemake-sibdays2020), and at [UNIL in October 2021](https://github.com/RomainFeron/workshop-snakemake-unil2021). The repository contains:
 
 - A conda environment with all the dependencies required during the workshop
 - A reference implementation of solutions for all exercises
