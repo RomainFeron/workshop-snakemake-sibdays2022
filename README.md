@@ -14,7 +14,7 @@ All the exercises and material required to complete them are available on the re
 
 ## Note for Windows user
 
-Although Snakemake and Conda can work on Windows, the shell and general environment are very different from unix-based operating systems. If you are using a Windows machine for this workshop, please refer to the [Windows installation instructions](https://snakemake.readthedocs.io/en/v6.9.1/tutorial/setup.html#setup-on-windows) in the official documentation. We recommend you to setup the WSL if you can, as it is the most efficient way to run Snakemake on Windows, and it will be useful for many other Bioinfomatics applications in the future.
+Although Snakemake and Conda can work on Windows, the shell and general environment are very different from unix-based operating systems. If you are using a Windows machine for this workshop, please refer to the [Windows installation instructions](https://snakemake.readthedocs.io/en/v7.8.1/tutorial/setup.html#setup-on-windows) in the official documentation. We recommend you to setup the WSL if you can, as it is the most efficient way to run Snakemake on Windows, and it will be useful for many other Bioinfomatics applications in the future.
 
 ### Installing Conda
 
@@ -124,7 +124,7 @@ conda activate snakemake-workshop
 
 You can now run Snakemake and complete the workshop's exercises.
 
-### Additional note: creating an Conda environment for Snakemake
+### Additional note: creating a Conda environment for Snakemake
 
 For this workshop, for the sake of simplicity, we created a single Conda environment that contains both Snakemake and all the tools used in the workflow. In practice, this is not the correct way to use Conda with Snakemake workflows, as we will discuss during the workshop. This step is not part of the setup process, but if you want to use Snakemake by yourself in the future, the recommended way to run it is to create a conda environment specifically and only for Snakemake:
 
