@@ -1,6 +1,9 @@
 # Retrieve information from Snakemake
-input_file = open(snakemake.input[0], 'r')
-output_file = open(snakemake.output[0], 'w')
+# We have to use check if values are strings here because inputs and outputs 
+# are always iterables when they are defined with the syntax
+# rules.<rule>.<input/output>, even if there is only one input / output.
+input_file_path = snakemake.input if isinstance(snakemake.input, str) else snakemake.input[0]
+output_file_path = snakemake.output if isinstance(snakemake.output, str) else snakemake.output[0]
 
 # Initialize a dictionary where results will be stored
 # Structure will be a dictionary of dictionaries:
@@ -9,8 +12,10 @@ substitution_counts = {}
 
 # Iterate over variant lines in VCF file and parse them into the
 # results dictionary
-for line in input_file:
-    if not line.startswith("#"):  # Ignore comments and header
+with open(input_file_path) as vcf_file:
+    for line in vcf_file:
+        if line.startswith("#"):  # Ignore comments and header
+            continue
         fields = line.rstrip('\n').split('\t')  # Split variant lines by tab
         ref = fields[3]  # Ref allele is in the 4th field (0-based)
         alt = fields[4]  # Alt allele is in the 3rd field (0-based)
@@ -30,6 +35,7 @@ for line in input_file:
 
 # Iterate over results dictionary to save the results in comma-separated table
 # We sort ref nucleotides and alt nucleotides so the order of rows and columns is the same
-for ref_allele, alt_alleles in sorted(substitution_counts.items()):
-    # We use the 'sep'.join() syntax to create a string of 'sep'-separated counts
-    output_file.write(','.join([str(count) for nucleotide, count in sorted(alt_alleles.items())]) + '\n')
+with open(output_file_path, 'w') as substitution_matrix:
+    for ref_allele, alt_alleles in sorted(substitution_counts.items()):
+        # We use the 'sep'.join() syntax to create a string of 'sep'-separated counts
+        substitution_matrix.write(','.join([str(count) for nucleotide, count in sorted(alt_alleles.items())]) + '\n')
