@@ -18,7 +18,7 @@ Although Snakemake and Conda can work on Windows, the shell and general environm
 
 ### Installing Conda
 
-Detailed instructions [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
+Detailed instructions [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
 
 **Download the installer script and run it:**
 
