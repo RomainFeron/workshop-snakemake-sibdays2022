@@ -1,0 +1,11 @@
+rule bwa_mem:
+    '''
+    Align reads to an assembly.
+    '''
+    input:
+        assembly = 'data/genome.fa',
+        reads = 'data/samples/A.fastq'
+    output:
+        'results/A.bam'
+    shell:
+        'bwa mem {input.assembly} {input.reads} | samtools view -b > {output}'
