@@ -38,6 +38,7 @@ rule samtools_sort:
 
 rule call_variants:
     '''
+    Call variants from alignment files for all samples defined in the list SAMPLES.
     '''
     input:
         alignment_files = expand(rules.samtools_sort.output, sample=SAMPLES),
