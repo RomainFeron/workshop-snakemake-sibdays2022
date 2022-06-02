@@ -1,6 +1,10 @@
+# Snakemake command:
+# snakemake --cores 1
+
+
 rule bwa_mem:
     '''
-    Align reads to an assembly.
+    Align reads file 'data/samples/A.fastq' to the assembly 'data/genome.fa'.
     '''
     input:
         assembly = 'data/genome.fa',
