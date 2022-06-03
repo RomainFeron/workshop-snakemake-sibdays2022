@@ -1,0 +1,7 @@
+name: variant-calling-env
+channels:
+    - conda-forge
+    - bioconda
+dependencies:
+    - bcftools=1.15.1
+    - python=3.9.13
