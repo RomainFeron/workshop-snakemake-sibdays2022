@@ -1,0 +1,28 @@
+# Snakemake command:
+# snakemake --cores 4 --use-conda
+
+
+# Load parameters from the config file 'config.yaml'
+configfile: 'config.yaml'
+
+# Include snakefiles implementing alignment and variant calling rules
+# The order of includes matters!
+
+include: 'alignment.smk'
+include: 'variant_calling.smk'
+
+
+rule all:
+    '''
+    This 'dummy' rule is a common way to specify a default output with Snakemake.
+    Output files are defined as inputs for this rule without any output.
+    Because Snakemake executes the first rule in Snakefile by default, jobs to
+    generate all inputs from this rules will be triggered.
+    Here, we only need to specify the output of the rule 'compute_substition_matrix'
+    because all required jobs will automatically be inferred by Snakemake.
+    Because 'compute_substition_matrix' is defined after 'all' in the current
+    implementation, we cannot use the syntax 'rules.compute_substition_matrix.output'.
+    '''
+    input:
+        'results/substitution_matrix.tsv'
+
