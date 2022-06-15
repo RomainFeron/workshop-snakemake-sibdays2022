@@ -1,0 +1,8 @@
+data:
+  assembly: 'data/genome.fa'
+
+bwa:
+  threads: 2
+
+bcftools:
+  mutation_rate: 0.001

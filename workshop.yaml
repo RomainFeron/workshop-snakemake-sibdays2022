@@ -3,9 +3,9 @@ channels:
     - conda-forge
     - bioconda
 dependencies:
-    - python=3.6.8
-    - snakemake=6.9.1
-    - graphviz=2.38.0
-    - bcftools=1.9
-    - samtools=1.9
+    - python=3.9.13
+    - snakemake=7.8.1
+    - graphviz=2.48.0
+    - bcftools=1.15.1
+    - samtools=1.15.1
     - bwa=0.7.17

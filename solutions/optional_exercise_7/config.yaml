@@ -1,0 +1,12 @@
+data:
+  assembly: 'data/genome.fa'
+  samples:
+    A: 'data/samples/A.fastq'
+    B: 'data/samples/B.fastq'
+    C: 'data/samples/C.fastq'
+
+bwa:
+  threads: 2
+
+bcftools:
+  mutation_rate: 0.001
